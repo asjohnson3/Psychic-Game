@@ -23,6 +23,7 @@
     var guess = 0;
     var win = 0;
     var loss = 0;
+    var guessLeft = 3;
     // Randomly chooses a choice from the options array. This is the Computer's guess.
     var computerGuess = randomLetter[Math.floor(Math.random() * randomLetter.length)];
 
@@ -44,10 +45,12 @@
         computerGuess = randomLetter[Math.floor(Math.random() * randomLetter.length)];
       } else {
          guess++;
+         guessLeft--;
       }
     
     if (guess === 3){
         guess = 0;
+        guessLeft = 3;
         loss++;
         computerGuess = randomLetter[Math.floor(Math.random() * randomLetter.length)];
     }
@@ -56,7 +59,8 @@
       "<p> <strong>Player Choice: </strong>" + userGuess + "<strong>       Computer Choice: </strong>" + computerGuess +
       "<p> Wins: " + win +
       "<p> Losses: " + loss +
-      "<p> Guesses: " + guess;
+      "<p> Guesses: " + guess +
+      "<p> Guesses Left: " + guessLeft;
 
       document.querySelector("#game").innerHTML = html;
 
